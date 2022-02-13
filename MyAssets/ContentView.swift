@@ -21,8 +21,7 @@ struct ContentView: View {
     
     var body: some View { //@State변수의 binding위한 $.
         TabView(selection: $selection) { //열거형 Tab
-            Color.white //AssetView
-                .edgesIgnoringSafeArea(.all)
+            AssetView()
                 .tabItem {
                     Image(systemName: "dollarsign.circle.fill")
                     Text("자산")
@@ -51,7 +50,7 @@ struct ContentView: View {
         }
         .accentColor(.purple) //강조컬러. 탭바의 경우, 선택 시 나타나는 컬러.
         .onAppear {
-            UITabBar.appearance().backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            UITabBar.appearance().backgroundColor = UIColor.lightGray
         }
     }
 }

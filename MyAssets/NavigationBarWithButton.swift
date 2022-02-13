@@ -28,7 +28,7 @@ struct NavigationBarWithButton: ViewModifier { //수정자. 메서드(). 함수�
                     .accentColor(.black)
                     .padding(EdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 13))
 //                    .cornerRadius(10)
-                    .overlay(
+                    .overlay( //위에 덮이게하는.
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.black) //테두리
                     ) //이런 Modifier설정 등은 우측 속성관리자에서 검색하여 코드를 자동으로 추가할 수 도 있으니 참고.
@@ -37,7 +37,7 @@ struct NavigationBarWithButton: ViewModifier { //수정자. 메서드(). 함수�
             .onAppear { //init의 기능과 유사. 글고 UIKit적 기능 가져올수있다.
                 let appearance = UINavigationBarAppearance()
                 appearance.configureWithTransparentBackground() //투명도 설정 가능여부
-                appearance.backgroundColor = UIColor(white: 1, alpha: 0.5) //투명도 설정
+                appearance.backgroundColor = UIColor(white: 1, alpha: 0.9) //투명도 설정
                 UINavigationBar.appearance().standardAppearance = appearance // ***
                 UINavigationBar.appearance().compactAppearance = appearance
                 UINavigationBar.appearance().scrollEdgeAppearance = appearance // ***
