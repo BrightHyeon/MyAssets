@@ -14,6 +14,8 @@ struct AssetView: View {
                 VStack(spacing: 30) {
                     Spacer() //여백주는 놈.
                     AssetMenuGridView()
+                    AssetBannerView()
+                        .aspectRatio(5/2, contentMode: .fit)
                 }
             }
             .background(Color.gray.opacity(0.5))

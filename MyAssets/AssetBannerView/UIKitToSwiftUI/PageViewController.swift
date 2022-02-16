@@ -10,6 +10,7 @@ import UIKit
 
 //미리만든 BannerCard란 Page를 다루는 PageViewController.
 //Page로 View를 받고, UIViewControllerRepresentable프로토콜 채택.
+//Representable한 PageViewController
 struct PageViewController<Page: View>: UIViewControllerRepresentable {
     var pages: [Page]
     @Binding var currentPage: Int //현재 어떤 페이지가 보이고있는지를 확인.
@@ -52,7 +53,7 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
                 UIHostingController(rootView: $0)
             }
         }
-        //필수 UIPageViewControllerDelegate함수
+        //MARK: - 필수 UIPageViewControllerDelegate함수
         //지금 뷰컨의 이전 뷰컨은 누구냐? 하는 듯.
         func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
             guard let index = controllers.firstIndex(of: viewController) else { return nil }
@@ -71,6 +72,15 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
             }
             
             return controllers[index + 1]
+        }
+        
+        func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+            //완전히 animation이 끝났을 때(completed), 변수 currentPage에 인덱스를 전달하도록 설정.
+            if completed,
+               let visibleViewController = pageViewController.viewControllers?.first,
+               let index = controllers.firstIndex(of: visibleViewController) {
+                parent.currentPage = index
+            }
         }
     }
 }

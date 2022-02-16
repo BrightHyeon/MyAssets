@@ -48,7 +48,7 @@ struct ContentView: View {
                 } //이렇게 Label로 더 간편히 설정가능. but 안되는경우도 있다...주의!
                 .tag(Tab.setting)
         }
-        .accentColor(.purple) //강조컬러. 탭바의 경우, 선택 시 나타나는 컬러.
+        .accentColor(.black) //강조컬러. 탭바의 경우, 선택 시 나타나는 컬러.
         .onAppear {
             UITabBar.appearance().backgroundColor = UIColor.lightGray
         }
