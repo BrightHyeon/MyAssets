@@ -10,11 +10,11 @@ import SwiftUI
 struct AssetMenuGridView: View {
     let menuList: [[AssetMenu]] = [
         [.creditScore, .bankAccount, .investment, .loan],
-        [.insurance, .cerditCard, .cash, .realEstate]
+        [.insurance, .creditCard, .cash, .realEstate]
     ]
     var body: some View {
         VStack(spacing: 20) {
-            //Clouser안에서 일반적인 흐름제어문인 for문은 사용이 불가능. ForEach를 사용하자.
+            //Closure안에서 일반적인 흐름제어문인 for문은 사용이 불가능. ForEach를 사용하자.
             ForEach(menuList, id: \.self) { row in
                 HStack(spacing: 10) {
                     ForEach(row) { menu in

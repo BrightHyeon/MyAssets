@@ -16,9 +16,11 @@ struct AssetView: View {
                     AssetMenuGridView()
                     AssetBannerView()
                         .aspectRatio(5/2, contentMode: .fit)
+                    AssetSummaryView()
+                        .environmentObject(AssetSummaryData())
                 }
             }
-            .background(Color.gray.opacity(0.5))
+            .background(Color.gray.opacity(0.2))
             .navigationBarWithButtonStyle("내 자산") //이거 여기추가하구나. 한층 바깥에서하는줄. 네비뷰 안의 스크롤뷰에 딸리네. 스크롤뷰가 덮고 있어서 그런듯!
         }
     }

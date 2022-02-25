@@ -35,6 +35,7 @@ struct NavigationBarWithButton: ViewModifier { //수정자. 메서드(). 함수�
             )
             .navigationBarTitleDisplayMode(.inline) //?????
             .onAppear { //init의 기능과 유사. 글고 UIKit적 기능 가져올수있다.
+                //나타날 때 실행. 초기화코드느낌인거즁.
                 let appearance = UINavigationBarAppearance()
                 appearance.configureWithTransparentBackground() //투명도 설정 가능여부
                 appearance.backgroundColor = UIColor(white: 1, alpha: 0.9) //투명도 설정
@@ -45,7 +46,7 @@ struct NavigationBarWithButton: ViewModifier { //수정자. 메서드(). 함수�
     }
 }
 
-//View를 extension해서 설정한 modifier를 사용할 수 있도록 설정. modifier(설정한 modifier)
+//View를 extension해서 설정한 modifier를 사용할 수 있도록 설정. modifier(설정한 modifier) //이거안해도 바로 modifier로 불러올수도있음.
 extension View {
     func navigationBarWithButtonStyle(_ title: String) -> some View {
         return self.modifier(NavigationBarWithButton(title: title))
